@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>V60 Pour-Over Brew Guide | AromaCraft Roasters</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .step-list {
+      counter-reset: brew-step;
+      list-style: none;
+      margin: 2rem 0;
+    }
+    .step-list li {
+      position: relative;
+      padding-left: 3.5rem;
+      margin-bottom: 2rem;
+    }
+    .step-list li::before {
+      counter-increment: brew-step;
+      content: counter(brew-step);
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: var(--secondary);
+      color: #fff;
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav-container">
+          <a href="index.html" class="logo">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+              <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+              <line x1="6" y1="1" x2="6" y2="4"></line>
+              <line x1="10" y1="1" x2="10" y2="4"></line>
+              <line x1="14" y1="1" x2="14" y2="4"></line>
+            </svg>
+            <span>Aroma<span class="logo-accent">Craft</span></span>
+          </a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="brewing-guides.html" class="active">Brew Guides</a></li>
+          <li><a href="sustainability.html">Direct Trade</a></li>
+          <li><a href="locations.html">Locations</a></li>
+          <li><a href="blog.html">Journal</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-header">
+      <div class="container">
+        <h1>V60 Pour-Over Method</h1>
+        <p>Master the technique for clean, sparkling clarity and aromatic cup extraction.</p>
+      </div>
+    </div>
+
+    <section class="section-padding container" style="max-width: 800px;">
+      <div class="card" style="margin-bottom: 2.5rem; background: #fff;">
+        <h3>Brewing Ratio &amp; Parameters</h3>
+        <p><strong>Dose:</strong> 20g coffee | <strong>Water:</strong> 320g water (1:16 ratio) | <strong>Temp:</strong> 93°C (200°F) | <strong>Time:</strong> 3:15 min</p>
+      </div>
+
+      <ol class="step-list">
+        <li>
+          <h4>Rinse Filter and Preheat</h4>
+          <p>Place paper filter inside your V60 cone. Flush thoroughly with boiling water to remove paper taste and preheat server. Discard water.</p>
+        </li>
+        <li>
+          <h4>Add Ground Coffee &amp; Bloom</h4>
+          <p>Add 20g medium-fine ground coffee. Pour 60g water in concentric circles. Wait 45 seconds to let carbon dioxide escape ("the bloom").</p>
+        </li>
+        <li>
+          <h4>Continuous Concentric Pours</h4>
+          <p>Pour slowly in smooth spirals until the scale reads 200g. At 1:45 min, pour remaining water up to 320g, keeping the kettle spout close to the slurry.</p>
+        </li>
+        <li>
+          <h4>Drawdown &amp; Serve</h4>
+          <p>Give the brewer a gentle single swirl. Allow all water to draw down cleanly. Total time should land between 3:00 and 3:30 minutes. Swirl and serve!</p>
+        </li>
+      </ol>
+
+      <a href="brewing-guides.html" class="btn btn-secondary">&larr; Return to All Brew Guides</a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 AromaCraft Coffee Roasters. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

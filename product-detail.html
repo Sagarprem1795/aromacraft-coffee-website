@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ethiopian Yirgacheffe | AromaCraft Roasters</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .product-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .product-layout { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav-container">
+            <a href="index.html" class="logo">
+              <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                <line x1="6" y1="1" x2="6" y2="4"></line>
+                <line x1="10" y1="1" x2="10" y2="4"></line>
+                <line x1="14" y1="1" x2="14" y2="4"></line>
+              </svg>
+              <span>Aroma<span class="logo-accent">Craft</span></span>
+            </a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="shop.html" class="active">Shop</a></li>
+          <li><a href="brewing-guides.html">Brew Guides</a></li>
+          <li><a href="sustainability.html">Direct Trade</a></li>
+          <li><a href="locations.html">Locations</a></li>
+          <li><a href="blog.html">Journal</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section-padding container">
+    <div class="product-layout">
+      <div>
+        <img src="https://images.unsplash.com/photo-1587734195503-904fca47e0e9?auto=format&fit=crop&w=800&q=80" alt="Ethiopian Yirgacheffe Bag" style="border-radius: var(--radius); width: 100%;">
+      </div>
+      <div>
+        <p style="color: var(--secondary); font-weight: 600; text-transform: uppercase;">Single Origin Micro-Lot</p>
+        <h1 style="color: var(--primary); margin: 0.5rem 0 1rem 0;">Ethiopian Yirgacheffe</h1>
+        <p class="price" style="font-size: 1.8rem; color: var(--secondary); font-weight: 700; margin-bottom: 1.5rem;">$19.50 <span style="font-size: 1rem; color: var(--muted); font-weight: 400;">/ 340g (12oz)</span></p>
+        
+        <p style="margin-bottom: 1.5rem; color: var(--muted);">
+          Grown at an altitude of 2,100 meters in the Gedeo zone, this washed lot highlights intense florality, bright lemon zest acidity, and delicate black tea mouthfeel.
+        </p>
+
+        <div style="background: #fff; padding: 1.5rem; border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 1.5rem;">
+          <h4 style="margin-bottom: 0.5rem;">Roast Specifications</h4>
+          <ul style="list-style-position: inside; color: var(--muted); line-height: 1.8;">
+            <li><strong>Origin:</strong> Yirgacheffe, Gedeo, Ethiopia</li>
+            <li><strong>Processing:</strong> Fully Washed, Raised Bed Sun-Dried</li>
+            <li><strong>Elevation:</strong> 1,950m – 2,200m</li>
+            <li><strong>Roast Level:</strong> Light-Medium (Agtron 64/78)</li>
+          </ul>
+        </div>
+
+        <div class="form-group">
+          <label for="grind">Grind Preference:</label>
+          <select id="grind">
+            <option>Whole Bean (Recommended)</option>
+            <option>Coarse (French Press / Cold Brew)</option>
+            <option>Medium (Drip / Chemex / V60)</option>
+            <option>Fine (Espresso / Moka)</option>
+          </select>
+        </div>
+
+        <a href="shop.html" class="btn" style="width: 100%; text-align: center;">Back to Shop Catalog</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 AromaCraft Coffee Roasters. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

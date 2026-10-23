@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Direct Trade &amp; Sustainability | AromaCraft Roasters</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* Sustainability-Specific Layout Styles */
+    .sustain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .sustain-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+    }
+
+    .sustain-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 32px rgba(44, 34, 30, 0.12);
+    }
+
+    .sustain-img-wrapper {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .sustain-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .sustain-card:hover .sustain-img-wrapper img {
+      transform: scale(1.06);
+    }
+
+    .pillar-tag {
+      position: absolute;
+      bottom: 0.85rem;
+      left: 0.85rem;
+      background: rgba(44, 34, 30, 0.85);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.3rem 0.75rem;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .sustain-body {
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .sustain-body h2 {
+      font-size: 1.35rem;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .sustain-body p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Impact Metrics Counter Strip */
+    .metrics-strip {
+      background: #f4ede4;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 2.5rem 1.5rem;
+      margin-bottom: 4rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .metric-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--secondary);
+      line-height: 1.1;
+      margin-bottom: 0.35rem;
+    }
+
+    .metric-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Report & Table Box */
+    .audit-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .audit-box h2 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .audit-box p {
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .sustain-cta {
+      text-align: center;
+      margin-top: 4rem;
+      padding: 3rem 1.5rem;
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+
+    .sustain-cta h3 {
+      font-size: 1.6rem;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .sustain-cta p {
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto 1.5rem auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar with Animated Coffee Logo -->
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+          <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+          <line x1="6" y1="1" x2="6" y2="4"></line>
+          <line x1="10" y1="1" x2="10" y2="4"></line>
+          <line x1="14" y1="1" x2="14" y2="4"></line>
+        </svg>
+        <span>Aroma<span class="logo-accent">Craft</span></span>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="brewing-guides.html">Brew Guides</a></li>
+          <li><a href="sustainability.html" class="active">Direct Trade</a></li>
+          <li><a href="locations.html">Locations</a></li>
+          <li><a href="blog.html">Journal</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-header">
+      <div class="container">
+        <h1>Direct Trade &amp; Sustainability</h1>
+        <p>Cultivating resilient ecosystems and transparent relationships across the coffee belt.</p>
+      </div>
+    </div>
+
+    <section class="section-padding container">
+      
+      <!-- Key Impact Numbers -->
+      <div class="metrics-strip">
+        <div>
+          <div class="metric-number">40%</div>
+          <div class="metric-label">Above Fair-Trade Floor</div>
+        </div>
+        <div>
+          <div class="metric-number">100%</div>
+          <div class="metric-label">Direct Farm Traceability</div>
+        </div>
+        <div>
+          <div class="metric-number">0%</div>
+          <div class="metric-label">Petroleum Plastics Used</div>
+        </div>
+        <div>
+          <div class="metric-number">2,100m</div>
+          <div class="metric-label">Peak Canopy Elevation</div>
+        </div>
+      </div>
+
+      <!-- 3 Visual Pillars -->
+      <div class="sustain-grid">
+        
+        <!-- Card 1 -->
+        <article class="sustain-card">
+          <div class="sustain-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1607681034540-2c46cc71896d?auto=format&fit=crop&w=700&q=80" alt="Coffee farm worker picking beans">
+            <span class="pillar-tag">Farmer Equity</span>
+          </div>
+          <div class="sustain-body">
+            <h2>Fair Living Compensation</h2>
+            <p>
+              We bypass speculative commodity brokers and contract directly with farm washing stations. By guaranteeing multi-year contracts at pre-negotiated premiums, farming cooperatives can invest in clean water, education, and fair agricultural wages.
+            </p>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="sustain-card">
+          <div class="sustain-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=700&q=80" alt="Lush forest canopy over crops">
+            <span class="pillar-tag">Agroforestry</span>
+          </div>
+          <div class="sustain-body">
+            <h2>Shade Canopy Agriculture</h2>
+            <p>
+              Sun-scorched clearings degrade nutrient richness. Every coffee shrub in our portfolio grows beneath native shade tree canopies, providing vital habitats for migratory birds, conserving soil moisture, and eliminating artificial fertilizers.
+            </p>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="sustain-card">
+          <div class="sustain-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1530587191325-3db32d826c18?auto=format&fit=crop&w=700&q=80" alt="Recyclable and compostable packaging materials">
+            <span class="pillar-tag">Circular Lifecycle</span>
+          </div>
+          <div class="sustain-body">
+            <h2>Zero-Waste Packaging</h2>
+            <p>
+              From roastery shipping mailers to in-café takeaway cups, every packaging asset is 100% commercially compostable. Our bags are crafted using renewable wood pulp kraft papers and lined with natural plant-derived PLA.
+            </p>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Price Transparency Table -->
+      <div class="audit-box">
+        <h2>2025–2026 Price Transparency Ledger</h2>
+        <p>A direct comparison of our purchase prices (FOB per pound) versus standard global commodity market floors.</p>
+        
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Origin &amp; Cooperative</th>
+                <th>Harvest Method</th>
+                <th>Global Commodity (C-Market)</th>
+                <th>Fair Trade Minimum</th>
+                <th>AromaCraft Direct Paid</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Gedeo Zone, Ethiopia</strong> (Yirgacheffe Lot)</td>
+                <td>Washed / Raised Beds</td>
+                <td>$1.85 / lb</td>
+                <td>$2.40 / lb</td>
+                <td><strong>$4.15 / lb</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Huila, Colombia</strong> (Reserve Family Lot)</td>
+                <td>Honey Anaerobic</td>
+                <td>$1.85 / lb</td>
+                <td>$2.40 / lb</td>
+                <td><strong>$3.95 / lb</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Antigua, Guatemala</strong> (Volcanic Valley)</td>
+                <td>Full Washed</td>
+                <td>$1.85 / lb</td>
+                <td>$2.40 / lb</td>
+                <td><strong>$3.70 / lb</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Aceh, Sumatra</strong> (Organic Cooperative)</td>
+                <td>Wet-Hulled (Giling Basah)</td>
+                <td>$1.85 / lb</td>
+                <td>$2.40 / lb</td>
+                <td><strong>$3.80 / lb</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Bottom Call To Action -->
+      <div class="sustain-cta">
+        <h3>Taste the Direct-Trade Difference</h3>
+        <p>Every bag you purchase directly funds farm infrastructure improvements, clean water access, and regenerative agricultural training.</p>
+        <a href="shop.html" class="btn">Explore Single Origin Coffees</a>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 AromaCraft Coffee Roasters. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

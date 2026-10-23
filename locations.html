@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Locations &amp; Hours | AromaCraft Roasters</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* Specific Location Page Styling */
+    .locations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .location-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+    }
+
+    .location-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px rgba(44, 34, 30, 0.12);
+    }
+
+    .location-img-wrap {
+      position: relative;
+      height: 230px;
+      overflow: hidden;
+    }
+
+    .location-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .location-card:hover .location-img-wrap img {
+      transform: scale(1.05);
+    }
+
+    .status-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(44, 34, 30, 0.85);
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.35rem 0.8rem;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .status-badge.open {
+      background: #2e7d32;
+    }
+
+    .location-body {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .location-body h2 {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 1.25rem;
+    }
+
+    .detail-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      margin-bottom: 1rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .detail-row svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--secondary);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .detail-row strong {
+      color: var(--dark);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .amenities {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1.5rem 0;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .amenity-pill {
+      background: #f4ede4;
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.3rem 0.75rem;
+      border-radius: 12px;
+    }
+
+    .location-actions {
+      margin-top: auto;
+      display: flex;
+      gap: 0.75rem;
+      padding-top: 1rem;
+    }
+
+    .location-actions .btn {
+      flex: 1;
+      text-align: center;
+      padding: 0.65rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    /* Embedded Map Section */
+    .map-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .map-section h2 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .map-section p {
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .map-frame-container {
+      width: 100%;
+      height: 420px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .map-frame-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    @media (max-width: 768px) {
+      .locations-grid {
+        grid-template-columns: 1fr;
+      }
+      .location-actions {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Header with Animated Logo -->
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+          <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+          <line x1="6" y1="1" x2="6" y2="4"></line>
+          <line x1="10" y1="1" x2="10" y2="4"></line>
+          <line x1="14" y1="1" x2="14" y2="4"></line>
+        </svg>
+        <span>Aroma<span class="logo-accent">Craft</span></span>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="brewing-guides.html">Brew Guides</a></li>
+          <li><a href="sustainability.html">Direct Trade</a></li>
+          <li><a href="locations.html" class="active">Locations</a></li>
+          <li><a href="blog.html">Journal</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-header">
+      <div class="container">
+        <h1>Visit Our Roastery &amp; Espresso Bars</h1>
+        <p>Fresh drinks, whole-bean retail bags, and peaceful work spaces.</p>
+      </div>
+    </div>
+
+    <section class="section-padding container">
+      <div class="locations-grid">
+        
+        <!-- Location 1 -->
+        <article class="location-card">
+          <div class="location-img-wrap">
+            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80" alt="Downtown Roastery Cafe Interior">
+            <span class="status-badge open">Open Today</span>
+          </div>
+          <div class="location-body">
+            <h2>Downtown Flagship Roastery</h2>
+            
+            <div class="detail-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <div>
+                <strong>Address</strong>
+                142 Riverfront Ave, Suite 100, Financial District
+              </div>
+            </div>
+
+            <div class="detail-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <div>
+                <strong>Operating Hours</strong>
+                Monday – Friday: 6:30 AM – 6:00 PM<br>
+                Saturday – Sunday: 7:30 AM – 5:00 PM
+              </div>
+            </div>
+
+            <div class="detail-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <div>
+                <strong>Phone &amp; Orders</strong>
+                (555) 392-8172
+              </div>
+            </div>
+
+            <div class="amenities">
+              <span class="amenity-pill">High-Speed Wi-Fi</span>
+              <span class="amenity-pill">Cupping Lab Tours</span>
+              <span class="amenity-pill">Full Breakfast &amp; Pastries</span>
+              <span class="amenity-pill">Power Outlets</span>
+            </div>
+
+            <div class="location-actions">
+              <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn">Get Directions</a>
+              <a href="menu.html" class="btn btn-secondary">View Menu</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Location 2 -->
+        <article class="location-card">
+          <div class="location-img-wrap">
+            <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80" alt="Westside Espresso Bar Walk-up">
+            <span class="status-badge open">Open Today</span>
+          </div>
+          <div class="location-body">
+            <h2>Westside Espresso Bar</h2>
+            
+            <div class="detail-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <div>
+                <strong>Address</strong>
+                88 Timberline Blvd, Arts &amp; Design Corridor
+              </div>
+            </div>
+
+            <div class="detail-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <div>
+                <strong>Operating Hours</strong>
+                Monday – Sunday: 7:00 AM – 3:00 PM
+              </div>
+            </div>
+
+            <div class="detail-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <div>
+                <strong>Phone &amp; Orders</strong>
+                (555) 749-1029
+              </div>
+            </div>
+
+            <div class="amenities">
+              <span class="amenity-pill">Express Window</span>
+              <span class="amenity-pill">Outdoor Garden Patio</span>
+              <span class="amenity-pill">Pet Friendly</span>
+              <span class="amenity-pill">Retail Whole Beans</span>
+            </div>
+
+            <div class="location-actions">
+              <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn">Get Directions</a>
+              <a href="menu.html" class="btn btn-secondary">View Menu</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Live Interactive Map Section -->
+      <div class="map-section">
+        <h2>Explore on the Map</h2>
+        <p>Centrally located near light-rail transit stations and major bicycle corridors.</p>
+        <div class="map-frame-container">
+          <iframe 
+            title="AromaCraft Roastery Map"
+            src="https://maps.google.com/maps?q=coffee%20roasters&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+            loading="lazy" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 AromaCraft Coffee Roasters. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

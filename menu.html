@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Café Bar Menu | AromaCraft Roasters</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* Specific Menu Layout Enhancements */
+    .menu-nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3.5rem;
+    }
+
+    .menu-nav a {
+      background: var(--surface);
+      color: var(--primary);
+      border: 1px solid var(--border);
+      padding: 0.6rem 1.4rem;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      transition: all 0.25s ease;
+    }
+
+    .menu-nav a:hover {
+      background: var(--secondary);
+      color: #fff;
+      border-color: var(--secondary);
+      transform: translateY(-2px);
+    }
+
+    .menu-section {
+      margin-bottom: 4rem;
+    }
+
+    .menu-section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .menu-section-header h2 {
+      font-size: 1.8rem;
+      color: var(--primary);
+    }
+
+    .menu-section-header span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* Menu Items Grid */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .menu-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+      box-shadow: var(--shadow);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(44, 34, 30, 0.08);
+      border-color: rgba(184, 93, 25, 0.35);
+    }
+
+    .menu-item-img {
+      width: 95px;
+      height: 95px;
+      border-radius: var(--radius);
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .menu-item-info {
+      flex-grow: 1;
+    }
+
+    .menu-item-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.35rem;
+    }
+
+    .menu-item-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .menu-item-price {
+      font-weight: 800;
+      color: var(--secondary);
+      font-size: 1.15rem;
+      white-space: nowrap;
+      margin-left: 0.5rem;
+    }
+
+    .menu-item-desc {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.45;
+      margin-bottom: 0.5rem;
+    }
+
+    .tag-container {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 0.2rem 0.55rem;
+      border-radius: 12px;
+      background: #f4ede4;
+      color: var(--primary);
+    }
+
+    .tag.highlight {
+      background: #fde8db;
+      color: var(--secondary);
+    }
+
+    /* Customize Add-ons Box */
+    .custom-box {
+      background: #f7f3ee;
+      border: 1px dashed var(--secondary);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+
+    .custom-box h3 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+    }
+
+    .custom-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+
+    .custom-col strong {
+      display: block;
+      color: var(--dark);
+      font-size: 0.95rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .custom-col ul {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    @media (max-width: 600px) {
+      .menu-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .menu-item-img {
+        width: 100%;
+        height: 160px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Header with Animated Logo -->
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+          <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+          <line x1="6" y1="1" x2="6" y2="4"></line>
+          <line x1="10" y1="1" x2="10" y2="4"></line>
+          <line x1="14" y1="1" x2="14" y2="4"></line>
+        </svg>
+        <span>Aroma<span class="logo-accent">Craft</span></span>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="menu.html" class="active">Menu</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="brewing-guides.html">Brew Guides</a></li>
+          <li><a href="sustainability.html">Direct Trade</a></li>
+          <li><a href="locations.html">Locations</a></li>
+          <li><a href="blog.html">Journal</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-header">
+      <div class="container">
+        <h1>Café Bar Menu</h1>
+        <p>Dialed-in espresso, slow-drip single origins, and artisan oven-baked pastries.</p>
+      </div>
+    </div>
+
+    <section class="section-padding container">
+      
+      <!-- Quick Navigation Anchors -->
+      <div class="menu-nav">
+        <a href="#espresso">Espresso &amp; Milk</a>
+        <a href="#slowbar">Slow Pour Bar</a>
+        <a href="#cold">Cold Extractions</a>
+        <a href="#pastries">Pastries &amp; Bites</a>
+      </div>
+
+      <!-- Section 1: Espresso -->
+      <div class="menu-section" id="espresso">
+        <div class="menu-section-header">
+          <h2>Espresso &amp; Textured Milk</h2>
+          <span>Pulled on Synesso MVP Hydra</span>
+        </div>
+
+        <div class="menu-grid">
+          <div class="menu-item">
+            <img class="menu-item-img" src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=300&q=80" alt="Espresso Shot">
+            <div class="menu-item-info">
+              <div class="menu-item-top">
+                <span class="menu-item-title">Double Espresso</span>
+                <span class="menu-item-price">$3.50</span>
+              </div>
+              <p class="menu-item-desc">Two concentrated shots of our seasonal Campfire blend with golden crema.</p>
+              <div class="tag-container">
+                <span class="tag highlight">House Blend</span>
+                <span class="tag">Gluten-Free</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-item">
+            <img class="menu-item-img" src="https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=300&q=80" alt="Cortado">
+            <div class="menu-item-info">
+              <div class="menu-item-top">
+                <span class="menu-item-title">Classic Cortado</span>
+                <span class="menu-item-price">$4.25</span>
+              </div>
+              <p class="menu-item-desc">Equal parts espresso and warm micro-foamed milk served in a 4oz Gibraltar glass.</p>
+              <div class="tag-container">
+                <span class="tag">Balanced</span>
+                <span class="tag">4oz</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-item">
+            <img class="menu-item-img" src="https://images.unsplash.com/photo-1577968897966-3d4325b36b61?auto=format&fit=crop&w=300&q=80" alt="Flat White">
+            <div class="menu-item-info">
+              <div class="menu-item-top">
+                <span class="menu-item-title">Flat White</span>
+                <span class="menu-item-price">$4.75</span>
+              </div>
+              <p class="menu-item-desc">Ristretto shots folded under velvety steamed whole milk with delicate foam art.</p>
+              <div class="tag-container">
+                <span class="tag highlight">Staff Pick</span>
+                <span class="tag">6oz</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-item">
+            <img class="menu-item-img" src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=300&q=80" alt="Vanilla Honey Latte">
+            <div class="menu-item-info">
+              <div class="menu-item-top">
+                <span class="menu-item-title">Honey Lavender Latte</span>
+                <span class="menu-item-price">$5.50</span>
+              </div>
+              <p class="menu-item-desc">House-infused wild lavender syrup, raw local honey, double espresso, and steamed milk.</p>
+              <div class="tag-container">
+                <span class="tag">Specialty</span>
+                <span class="tag">12oz</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2: Slow Pour Bar -->
+      <div class="menu-section" id="slowbar">
+        <div class="menu-section-header">
+          <h2>Manual Pour-Over Bar</h2>
+          <span>Hand-brewed to order at 93°C</span>
+        </div>
+
+        <div class="menu-grid">
+          <div class="menu-item">
+            <img class="menu-item-img" src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=300&q=80" alt="V60 Single Origin">
+            <div class="menu-item-info">
+              <div class="menu-item-top">
+                <span class="menu-item-title">Ethiopia Washed V60</span>
+                <span class="menu-item-price">$5.50</span>
+              </div>
+              <p class="menu-item-desc">High clarity brew highlighting jasmine florality, bergamot tea, and peach notes.</p>
+              <div class="tag-container">
+                <span class="tag highlight">Single Origin</span>
+                <span class="tag">Light Roast</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-item">
+            <img class="menu-item-img" src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=300&q=80" alt="Colombia Chemex">
+            <div class="menu-item-info">
+              <div class="menu-item-top">
+                <span class="menu-item-title">Colombia Huila Chemex</span>
+                <span class="menu-item-price">$5.75</span>
+              </div>
+              <p class="menu-item-desc">Double-bonded paper filtration highlighting crisp apple sweetness and praline finish.</p>
+              <div class="tag-container">
+                <span class="tag highlight">Single Origin</span>
+                <span class="tag">Medium Roast</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3: Cold Extractions -->
+      <div class="menu-section" id="cold">
+        <div class="menu-section-header">
+          <h2>Cold Extractions &amp; Refreshers</h2>
+          <span>Steeped 16 hours in cold-filtered water</span>
+        </div>
+
+        <div class="menu-grid">
+          <div class="menu-item">
+            <img class="menu-item-img" src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=300&q=80" alt="Nitro Cold Brew">
+            <div class="menu-item-info">
+              <div class="menu-item-top">
+                <span class="menu-item-title">Nitro Cold Brew</span>
+                <span class="menu-item-price">$5.25</span>
+              </div>
+              <p class="menu-item-desc">Infused with pure nitrogen gas on tap for a creamy, stout-like texture without dairy.</p>
+              <div class="tag-container">
+                <span class="tag highlight">On Tap</span>
+                <span class="tag">Dairy-Free</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-item">
+            <img class="menu-item-img" src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=300&q=80" alt="Espresso Tonic">
+            <div class="menu-item-info">
+              <div class="menu-item-top">
+                <span class="menu-item-title">Citrus Espresso Tonic</span>
+                <span class="menu-item-price">$5.50</span>
+              </div>
+              <p class="menu-item-desc">Chilled Fever-Tree Indian tonic water topped with espresso float and fresh grapefruit peel.</p>
+              <div class="tag-container">
+                <span class="tag">Sparkling</span>
+                <span class="tag">Refreshing</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 4: Pastries & Bites -->
+      <div class="menu-section" id="pastries">
+        <div class="menu-section-header">
+          <h2>Artisan Bakery</h2>
+          <span>Baked fresh every morning by local partners</span>
+        </div>
+
+        <div class="menu-grid">
+          <div class="menu-item">
+            <img class="menu-item-img" src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=300&q=80" alt="Almond Croissant">
+            <div class="menu-item-info">
+              <div class="menu-item-top">
+                <span class="menu-item-title">Twice-Baked Almond Croissant</span>
+                <span class="menu-item-price">$4.75</span>
+              </div>
+              <p class="menu-item-desc">Buttery layered pastry filled with almond frangipane cream and topped with sliced almonds.</p>
+              <div class="tag-container">
+                <span class="tag highlight">House Favorite</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-item">
+            <img class="menu-item-img" src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=300&q=80" alt="Sourdough Toast">
+            <div class="menu-item-info">
+              <div class="menu-item-top">
+                <span class="menu-item-title">Avocado Sourdough Toast</span>
+                <span class="menu-item-price">$8.50</span>
+              </div>
+              <p class="menu-item-desc">Country sourdough slice topped with crushed Haas avocado, radishes, sea salt, and chili flake.</p>
+              <div class="tag-container">
+                <span class="tag">Vegan</span>
+                <span class="tag">Organic</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Customization Box -->
+      <div class="custom-box">
+        <h3>Drink Customizations &amp; Milk Alternatives</h3>
+        <p style="color: var(--muted); font-size: 0.95rem;">Tailor your drink to your dietary preference at no compromise in espresso quality.</p>
+        
+        <div class="custom-grid">
+          <div class="custom-col">
+            <strong>Milk Substitutes (+$0.75)</strong>
+            <ul>
+              <li>Oatly Barista Edition Oat Milk</li>
+              <li>Pacific Foods Organic Almond Milk</li>
+              <li>Organic Coconut / Soy Blend</li>
+            </ul>
+          </div>
+          <div class="custom-col">
+            <strong>Syrups &amp; Extras (+$0.50)</strong>
+            <ul>
+              <li>House-Made Madagascar Vanilla</li>
+              <li>Brown Sugar Cinnamon Syrup</li>
+              <li>Single-Origin Extra Shot (+$1.25)</li>
+            </ul>
+          </div>
+          <div class="custom-col">
+            <strong>Dietary Standards</strong>
+            <ul>
+              <li>Decaf Mountain Water Process Available</li>
+              <li>Sugar-Free Vanilla Option</li>
+              <li>100% Compostable To-Go Cups</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 AromaCraft Coffee Roasters. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
